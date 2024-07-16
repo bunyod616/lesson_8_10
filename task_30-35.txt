@@ -1,0 +1,60 @@
+31 = https://www.codewars.com/kata/54eea36b7f914221eb000e2f/train/python = Alphabetize a list by the nth character
+
+def sort_it(words, n):
+    words_list = [word.strip() for word in words.split(',')]
+    def sort_key(word):
+        return (word[n-1].lower(), word.lower())
+    sorted_words = sorted(words_list, key=sort_key)
+    return ', '.join(sorted_words)
+
+32 = https://www.codewars.com/kata/53da6a7e112bd15cbc000012/train/python = Sorting Dictionaries
+
+def sort_dict(d):
+    sorted_items = sorted(d.items(), key=lambda item: item[1], reverse=True)
+    return sorted_items
+
+33 = https://www.codewars.com/kata/625ea5c1a071210065c923af/train/python = Plastic Balance
+
+def plastic_balance(lst):
+    if len(lst) == 1:
+        return lst
+    
+    while len(lst) > 1:
+        left_sum = lst[0]
+        right_sum = lst[-1]
+        middle_sum = sum(lst[1:-1])
+        
+        if left_sum + right_sum == middle_sum:
+            return lst
+        
+        lst = lst[1:-1]
+    
+    return []
+34 = https://www.codewars.com/kata/5729c30961cecadc4f001878/train/python = Sorted Union
+
+def unite_unique(*arrays):
+    seen = set()
+    result = []
+    
+    for arr in arrays:
+        for num in arr:
+            if num not in seen:
+                result.append(num)
+                seen.add(num)
+    
+    return result
+
+35 = https://www.codewars.com/kata/5b5e0ef007a26632c400002a/train/python = Sub-array elements sum
+
+def elements_sum(arrs, default=None):
+    total_sum = 0
+    arrs_len = len(arrs)
+    
+    for i, arr in enumerate(arrs):
+        index = arrs_len - i - 1
+        if index < len(arr) and index >= 0:
+            total_sum += arr[index]
+        elif default is not None:
+            total_sum += default
+    
+    return total_sum
